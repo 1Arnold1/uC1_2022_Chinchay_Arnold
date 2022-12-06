@@ -1,4 +1,4 @@
-# UNP_microcontroladores
+# uC1_2022_Chinchay_Arnold
 
 ***Curso:*** Microcontroladores I 
 
