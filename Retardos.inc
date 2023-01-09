@@ -1,7 +1,7 @@
 ;--------------------------------------------------------------
 ; @file:    Retardos.inc
 ; @brief:   Libreria de retardos <10us - 250ms>
-; @date:    08/01/2023
+; @date:    09/01/2023
 ; @author:  Arnold Antonio Chinchay Saguma
 ;------------------------------------------------------------------
 
