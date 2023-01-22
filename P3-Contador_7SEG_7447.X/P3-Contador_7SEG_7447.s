@@ -1,6 +1,7 @@
 PROCESSOR 18F57Q84
-#include "Bit_config.inc"  /config statements should precede project file includes./
+#include "BIT_config.inc"  /config statements should precede project file includes./
 #include <xc.inc>
+#include "Retardos.inc"
      
 ;--------------------------------------------------------------------------------
 ; @file:    P3-Contador_7SEG_7447.s
@@ -8,10 +9,6 @@ PROCESSOR 18F57Q84
 ; @date:    15/01/2022
 ; @author:  Arnold Antonio Chinchay Saguma
 ;-------------------------------------------------------------------------------- 
-    
-PSECT udata_acs
- contador1: DS 1
- contador2: DS 1
 
 PSECT resetVect,class=CODE,reloc=2
 resetVect:
@@ -142,29 +139,10 @@ Config_Port:  ;PORT-LAT-ANSEL-TRIS	    LED:RF3	BUTTON:RA3
     RETURN 
     
 Delay_1s:
-;    Call	Delay_250ms
     Call	Delay_250ms
     Call	Delay_250ms
     Call	Delay_250ms
-Delay_250ms:		    ;2Tcy -- Call
-    MOVLW	250		    ;1Tcy
-    MOVWF	contador2,0	    ;1Tcy
- 
-
-Ext_Loop_250ms:
-    MOVLW	248		    ;n*TcyTcy
-    MOVWF	contador1,0	    ;n*Tcy
-    
-Int_Loop_250ms:
-    NOP				    ;k*Tcy
-    DECFSZ	contador1,1,0	    ;((k-1) + 3)*n*Tcy
-    GOTO	Int_Loop_250ms	    ;(k-1)*2*n*Tcy
-    NOP				    ;n*Tcy
-    NOP				    ;n*Tcy
-    NOP				    ;n*Tcy
-    DECFSZ	contador2,1,0	    ;(n-1) + 3Tcy
-    GOTO	Ext_Loop_250ms	    ;(n-1)*2Tcy
-    RETURN			    ;2Tcy
-     
+    Call	Delay_250ms
+   
 END resetVect
 
