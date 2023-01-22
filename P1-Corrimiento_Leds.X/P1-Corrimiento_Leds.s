@@ -1,6 +1,7 @@
 PROCESSOR 18F57Q84
 #include "BIT_config.inc"  /config statements should precede project file includes./
 #include <xc.inc>
+#include "Retardos.inc"
      
 ;--------------------------------------------------------------------------
 ; @file:    P1-Corrimiento_Leds.s
@@ -8,10 +9,6 @@ PROCESSOR 18F57Q84
 ; @date:    15/01/2022
 ; @author:  Arnold Antonio Chinchay Saguma
 ;--------------------------------------------------------------------------
-    
-PSECT udata_acs
- contador1: DS 1
- contador2: DS 1
     
 PSECT resetVect,class=CODE,reloc=2
 resetVect:
@@ -48,7 +45,7 @@ Corr_impar:
     MOVLW   00000001B	    ; w = 00000001
     MOVWF   LATE,1	    ; LED ON	
     Call    Loop
-    CALL    Delay_250ms1,1
+    CALL    Delay_250ms,1
    
     N_2:
     Call    Loop
@@ -120,7 +117,7 @@ Corr_par:
     MOVLW   00000010B	    ; w = 00000010
     MOVWF   LATE,1	    ; LED ON	
     Call    Loop
-    CALL    Delay_250ms1,1
+    CALL    Delay_250ms,1
     Call    Loop
     CALL    Delay_250ms,1
    
@@ -231,65 +228,6 @@ Corr_par:
     BSF	    WPUA,3,1	; Activamos la resistencia Pull-Up del pin RA3
     RETURN
     
-
-Delay_250ms:		    ;2Tcy -- Call
-    MOVLW   250		    ;1Tcy ;250
-    MOVWF   contador2,0	    ;1Tcy
- 
-
-Ext_Loop_250ms:
-    MOVLW   245		    ;n*TcyTcy
-    MOVWF   contador1,0	    ;n*Tcy
-    
-Int_Loop_250ms:
-    NOP				    ;k*Tcy
-    DECFSZ  contador1,1,0	    ;((k-1) + 3)*n*Tcy
-    GOTO    Int_Loop_250ms	    ;(k-1)*2*n*Tcy
-    NOP				    ;n*Tcy
-    NOP				    ;n*Tcy
-    NOP				    ;n*Tcy
-    DECFSZ  contador2,1,0	    ;(n-1) + 3Tcy
-    GOTO    Ext_Loop_250ms	    ;(n-1)*2Tcy
-    RETURN
-    
-Delay_250ms1:			    ;2Tcy -- Call
-    MOVLW   250			    ;1Tcy
-    MOVWF   contador2,0		    ;1Tcy
- 
-
-Ext_Loop_250ms1:
-    MOVLW   247			    ;n*TcyTcy
-    MOVWF   contador1,0		    ;n*Tcy
-    
-Int_Loop_250ms1:
-    NOP				    ;k*Tcy
-    DECFSZ  contador1,1,0	    ;((k-1) + 3)*n*Tcy
-    GOTO    Int_Loop_250ms1	    ;(k-1)*2*n*Tcy
-    NOP				    ;n*Tcy
-    NOP				    ;n*Tcy
-    NOP				    ;n*Tcy
-    DECFSZ  contador2,1,0	    ;(n-1) + 3Tcy
-    GOTO    Ext_Loop_250ms1	    ;(n-1)*2Tcy
-    RETURN		
-
-    
-Delay_100ms:			    ;2Tcy -- Call
-    MOVLW   100			    ;1Tcy
-    MOVWF   contador2,0		    ;1Tcy
-
-Ext_Loop_100ms:
-    MOVLW   248			    ;n*Tcy
-    MOVWF   contador1,0		    ;n*Tcy
-    NOP				    ;n*Tcy
-Int_Loop_100ms:
-    NOP				    ;k*n*Tcy
-    DECFSZ  contador1,1,0	    ;((k-1) + 3)*n*Tcy
-    GOTO    Int_Loop_100ms	    ;(k-1)* 2*n*Tcy
-    NOP				    ;n*Tcy 
-    NOP				    ;n*Tcy
-    DECFSZ  contador2,1,0	    ;(n-1) + 3Tcy
-    GOTO    Ext_Loop_100ms	    ;(n-1) *2Tcy
-    RETURN			    ;2Tcy
 END resetVect
 
 

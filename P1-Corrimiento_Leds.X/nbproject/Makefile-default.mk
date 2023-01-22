@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=Practica_1.s
+SOURCEFILES_QUOTED_IF_SPACED=P1-Corrimiento_Leds.s
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/Practica_1.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/Practica_1.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/P1-Corrimiento_Leds.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/P1-Corrimiento_Leds.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/Practica_1.o
+OBJECTFILES=${OBJECTDIR}/P1-Corrimiento_Leds.o
 
 # Source Files
-SOURCEFILES=Practica_1.s
+SOURCEFILES=P1-Corrimiento_Leds.s
 
 
 
@@ -95,21 +95,21 @@ FINAL_IMAGE_NAME_MINUS_EXTENSION=${DISTDIR}/P1-Corrimiento_Leds.X.${IMAGE_TYPE}
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: pic-as-assembler
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${OBJECTDIR}/Practica_1.o: Practica_1.s  nbproject/Makefile-${CND_CONF}.mk 
+${OBJECTDIR}/P1-Corrimiento_Leds.o: P1-Corrimiento_Leds.s  nbproject/Makefile-${CND_CONF}.mk 
 	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/Practica_1.o 
+	@${RM} ${OBJECTDIR}/P1-Corrimiento_Leds.o 
 	${MP_AS} -mcpu=PIC18F57Q84 -c \
-	-o ${OBJECTDIR}/Practica_1.o \
-	Practica_1.s \
+	-o ${OBJECTDIR}/P1-Corrimiento_Leds.o \
+	P1-Corrimiento_Leds.s \
 	 -D__DEBUG=1  -misa=std -msummary=+mem,-psect,-class,-hex,-file,-sha1,-sha256,-xml,-xmlfull -fmax-errors=20 -mwarn=0 -xassembler-with-cpp
 	
 else
-${OBJECTDIR}/Practica_1.o: Practica_1.s  nbproject/Makefile-${CND_CONF}.mk 
+${OBJECTDIR}/P1-Corrimiento_Leds.o: P1-Corrimiento_Leds.s  nbproject/Makefile-${CND_CONF}.mk 
 	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/Practica_1.o 
+	@${RM} ${OBJECTDIR}/P1-Corrimiento_Leds.o 
 	${MP_AS} -mcpu=PIC18F57Q84 -c \
-	-o ${OBJECTDIR}/Practica_1.o \
-	Practica_1.s \
+	-o ${OBJECTDIR}/P1-Corrimiento_Leds.o \
+	P1-Corrimiento_Leds.s \
 	 -misa=std -msummary=+mem,-psect,-class,-hex,-file,-sha1,-sha256,-xml,-xmlfull -fmax-errors=20 -mwarn=0 -xassembler-with-cpp
 	
 endif
