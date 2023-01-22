@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=Practica_2.s
+SOURCEFILES_QUOTED_IF_SPACED=P2-Display_7SEG.s
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/Practica_2.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/Practica_2.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/P2-Display_7SEG.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/P2-Display_7SEG.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/Practica_2.o
+OBJECTFILES=${OBJECTDIR}/P2-Display_7SEG.o
 
 # Source Files
-SOURCEFILES=Practica_2.s
+SOURCEFILES=P2-Display_7SEG.s
 
 
 
@@ -95,21 +95,21 @@ FINAL_IMAGE_NAME_MINUS_EXTENSION=${DISTDIR}/P2-Display_7SEG.X.${IMAGE_TYPE}
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: pic-as-assembler
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${OBJECTDIR}/Practica_2.o: Practica_2.s  nbproject/Makefile-${CND_CONF}.mk 
+${OBJECTDIR}/P2-Display_7SEG.o: P2-Display_7SEG.s  nbproject/Makefile-${CND_CONF}.mk 
 	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/Practica_2.o 
+	@${RM} ${OBJECTDIR}/P2-Display_7SEG.o 
 	${MP_AS} -mcpu=PIC18F57Q84 -c \
-	-o ${OBJECTDIR}/Practica_2.o \
-	Practica_2.s \
+	-o ${OBJECTDIR}/P2-Display_7SEG.o \
+	P2-Display_7SEG.s \
 	 -D__DEBUG=1  -misa=std -msummary=+mem,-psect,-class,-hex,-file,-sha1,-sha256,-xml,-xmlfull -fmax-errors=20 -mwarn=0 -xassembler-with-cpp
 	
 else
-${OBJECTDIR}/Practica_2.o: Practica_2.s  nbproject/Makefile-${CND_CONF}.mk 
+${OBJECTDIR}/P2-Display_7SEG.o: P2-Display_7SEG.s  nbproject/Makefile-${CND_CONF}.mk 
 	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/Practica_2.o 
+	@${RM} ${OBJECTDIR}/P2-Display_7SEG.o 
 	${MP_AS} -mcpu=PIC18F57Q84 -c \
-	-o ${OBJECTDIR}/Practica_2.o \
-	Practica_2.s \
+	-o ${OBJECTDIR}/P2-Display_7SEG.o \
+	P2-Display_7SEG.s \
 	 -misa=std -msummary=+mem,-psect,-class,-hex,-file,-sha1,-sha256,-xml,-xmlfull -fmax-errors=20 -mwarn=0 -xassembler-with-cpp
 	
 endif
